@@ -1,5 +1,7 @@
 package com.sundevils.bookstore;
 
+import java.util.ArrayList;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
@@ -88,36 +90,62 @@ public class LoginPage extends Page {
         signUpBtn.setCursor(Cursor.HAND);
         grid.add(signUpBtn, 1, 6);
 
+        // Error text
+        Text errorText = new Text();
+        errorText.setFill(Color.RED);
+        grid.add(errorText, 1, 7);
+
         // Click Sign in Button
         signInBtn.setOnAction(e -> {
-            String username = userTextField.getText();
-            String password = passwordField.getText();
-        
             // Checking login 
-            if ((username.equals("Buyer") && password.equals("buy")) ||
-                (username.equals("Seller") && password.equals("sell")) ||
-                (username.equals("Admin") && password.equals("adm"))) {
-        
-                // Display role page
-                // String role = username;
-                // StackPane rolePage = new StackPane();
-                // rolePage.setStyle("-fx-background-color: #111111;");
-                // Text roleText = new Text(role);
-                // roleText.setFont(Font.font("", FontWeight.BOLD, 50));
-                // roleText.setFill(Color.DARKRED);
-                // rolePage.getChildren().add(roleText);
-                // Scene roleScene = new Scene(rolePage);
-                // primaryStage.setScene(roleScene);
-                // Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-                // primaryStage.setWidth(screenBounds.getWidth());
-                // primaryStage.setHeight(screenBounds.getHeight());
-                // primaryStage.centerOnScreen();
-            } else {
-                // Invalid Login message
-                Text errorText = new Text("Invalid Username or Password. Please try again.");
-                errorText.setFill(Color.RED);
-                grid.add(errorText, 1, 7);
+            String usernameInput = userTextField.getText();
+            String passwordInput = passwordField.getText();
+            ArrayList<User> foundLogins = User.findUsersByName(usernameInput, true);
+            boolean loggedIn = false;
+
+            for (User user : foundLogins) {
+                if (user.validatePassword(passwordInput)) {
+                    loggedIn = true;
+                    System.out.println("Logged in as User #" + user.id);
+                    break;
+                }
             }
+
+            if (!loggedIn) {
+                String errorMessage = "Incorrect password. Please try again.";
+
+                if (foundLogins.size() == 0) {
+                    errorMessage = "User not in system. Please try again.";
+                }
+
+                errorText.setText(errorMessage);
+            } else {
+                errorText.setText("");
+            }
+            
+            // if ((username.equals("Buyer") && password.equals("buy")) ||
+            // (username.equals("Seller") && password.equals("sell")) ||
+            // (username.equals("Admin") && password.equals("adm"))) {
+            //     Display role page
+            //     String role = username;
+            //     StackPane rolePage = new StackPane();
+            //     rolePage.setStyle("-fx-background-color: #111111;");
+            //     Text roleText = new Text(role);
+            //     roleText.setFont(Font.font("", FontWeight.BOLD, 50));
+            //     roleText.setFill(Color.DARKRED);
+            //     rolePage.getChildren().add(roleText);
+            //     Scene roleScene = new Scene(rolePage);
+            //     primaryStage.setScene(roleScene);
+            //     Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+            //     primaryStage.setWidth(screenBounds.getWidth());
+            //     primaryStage.setHeight(screenBounds.getHeight());
+            //     primaryStage.centerOnScreen();
+            // } else {
+            //     // Invalid Login message
+            //     Text errorText = new Text("Invalid Username or Password. Please try again.");
+            //     errorText.setFill(Color.RED);
+            //     grid.add(errorText, 1, 7);
+            // }
         });
 
         contentPane.getChildren().add(grid);

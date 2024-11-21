@@ -20,6 +20,11 @@ public class User {
         this.creationTime = creationTime;
     }
 
+    // Object methods
+    public boolean validatePassword(String passwordInput) {
+        return passwordInput.equals(password);
+    }
+    
     // Class methods
     public static ArrayList<User> findUsersByName(String username, boolean showPending) {
         ArrayList<User> users = new ArrayList<>();
