@@ -10,7 +10,9 @@ public class App extends Application  {
     private Database db;
     
     public UserDB userDB;
+
     public LoginView loginView;
+    public BuyerView buyerView;
 
     @Override
     public void start(Stage primaryStage) {
@@ -20,8 +22,11 @@ public class App extends Application  {
 
         // UI
         stage = primaryStage;
+        
         loginView = new LoginView();
-        setActiveView(loginView);
+        buyerView = new BuyerView();
+
+        setActiveView(buyerView);
 
         // Set singleton
         instance = this;
