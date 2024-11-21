@@ -6,7 +6,7 @@ public class UserView extends View {
 
     public UserView() {
         super();
-        tabPane = new TabPane(); // TODO: not have tabPane replace pane?
+        tabPane = new TabPane(); // TODO: not have tabPane replace pane? | https://stackoverflow.com/questions/39205244/buttons-in-tabpane-using-javafx
         scene.setRoot(tabPane);
     }
 }

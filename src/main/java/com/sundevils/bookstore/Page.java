@@ -4,7 +4,7 @@ import javafx.scene.layout.StackPane;
 
 public abstract class Page {
     protected StackPane contentPane;
-    protected String title;
+    protected String title; // TODO: set window title to this
 
     public Page() {
         contentPane = new StackPane();

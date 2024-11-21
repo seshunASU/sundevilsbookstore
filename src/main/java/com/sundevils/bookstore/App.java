@@ -3,18 +3,28 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class App extends Application  {
+    private static App instance;
+
     private View activeView;
     private Stage stage;
-
+    private Database db;
+    
+    public UserDB userDB;
     public LoginView loginView;
 
     @Override
     public void start(Stage primaryStage) {
-        stage = primaryStage;
+        // Databases
+        db = new Database();
+        userDB = new UserDB(db);
 
+        // UI
+        stage = primaryStage;
         loginView = new LoginView();
-        
         setActiveView(loginView);
+
+        // Set singleton
+        instance = this;
     }
 
     public void setActiveView(View view) {
@@ -25,6 +35,16 @@ public class App extends Application  {
         stage.show();
     }
 
+    // Singleton methods
+    public static App getInstance() {
+        return instance;
+    }
+
+    public static UserDB getUserDB() {
+        return getInstance().userDB;
+    }
+
+    // Main method
     public static void main(String[] args) {
         launch(args);
     }

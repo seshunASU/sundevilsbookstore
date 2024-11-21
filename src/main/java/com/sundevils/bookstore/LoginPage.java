@@ -59,6 +59,7 @@ public class LoginPage extends Page {
         passwordLabel.setFont(Font.font("", FontWeight.BOLD, 20));
         passwordLabel.setTextFill(Color.GOLD);
         grid.add(passwordLabel, 0, 3);
+        
         PasswordField passwordField = new PasswordField();
         passwordField.setPrefSize(400, 50);
         grid.add(passwordField, 1, 3);
