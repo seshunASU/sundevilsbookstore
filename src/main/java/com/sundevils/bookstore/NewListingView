@@ -1,0 +1,12 @@
+public class NewListingView extends View {
+	
+	private NewListingsPage createListingPage;
+
+    public NewListingView() {
+        super();
+        
+        createListingPage = new NewListingsPage();
+
+        setPage(createListingPage);
+    }
+}
