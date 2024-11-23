@@ -16,11 +16,7 @@ import javafx.scene.layout.VBox;
 public class BookListingsPage extends Page {
     public BookListingsPage() {
         title = "Book Listings";
-          
-        // TODO: clear copy & pasted code and actually make the page
 
-        // Creating the grid layout for the login page
-          
         Button accountButton = new Button("Account");
 		accountButton.setStyle("-fx-font-size: 20px; -fx-background-color: #8e0c3a; -fx-text-fill: gold;");
 		
