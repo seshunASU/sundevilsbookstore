@@ -1,8 +1,8 @@
 package com.sundevils.bookstore;
 
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -16,14 +16,8 @@ import javafx.scene.layout.VBox;
 public class BookListingsPage extends Page {
     public BookListingsPage() {
         title = "Book Listings";
-
-        Button accountButton = new Button("Account");
-		accountButton.setStyle("-fx-font-size: 20px; -fx-background-color: #8e0c3a; -fx-text-fill: gold;");
-		
-		HBox account = new HBox(accountButton);
-		account.setPadding(new Insets(0, 50, 0, 50));
-		account.setAlignment(Pos.TOP_RIGHT);
-        
+        showSignoutButton = true;
+          
 		TextField searchBar = new TextField();
 		searchBar.setPromptText("Search...");
 		searchBar.setStyle("-fx-font-size: 16px");
@@ -31,6 +25,11 @@ public class BookListingsPage extends Page {
 		
 		Button cartButton = new Button("Cart");
 		cartButton.setStyle("-fx-font-size: 16px");
+		cartButton.setCursor(Cursor.HAND);
+		cartButton.setOnAction(e -> {
+            BuyerView buyerView = App.getInstance().buyerView;
+            buyerView.setPage(buyerView.cartPage);
+        });
 		
 		HBox search = new HBox(searchBar, cartButton);
 		search.setPadding(new Insets(10, 50, 0, 50));
@@ -53,8 +52,8 @@ public class BookListingsPage extends Page {
 		bookGrid.setVgap(20);
 		bookGrid.setPadding(new Insets(20, 50, 50, 50));
 		
-		for (int i = 0; i < 48; i++) {
-			VBox book = createBookObject();
+		for (int i = 0; i < 16; i++) {
+			VBox book = createBookItem();
 			book.setMaxSize(100, 200);
 			
 			bookGrid.add(book, i % 8, i / 8);			
@@ -68,13 +67,13 @@ public class BookListingsPage extends Page {
 		scrollPane.setPadding(new Insets(20, 50, 50, 50)); 
         scrollPane.setStyle("-fx-background: #191919; -fx-border-color: #191919;");
         
-		VBox vbox = new VBox(account, search, bookOptions, scrollPane);
+		VBox vbox = new VBox(search, bookOptions, scrollPane);
 		vbox.setPadding(new Insets(70, 50, 0, 50));
 		
 		contentPane.getChildren().addAll(vbox);
-        contentPane.setStyle("-fx-background-color: #191919;"); // TODO: remove
     }    
-    public VBox createBookObject() {
+
+	public VBox createBookItem() {
     	VBox book = new VBox(5);
     	   	
     	Region bookCover = new Region();
@@ -109,6 +108,7 @@ public class BookListingsPage extends Page {
         
         Button addToCartButton = new Button("Add to Cart");
         addToCartButton.setStyle("-fx-font-size: 12px; -fx-background-color: #8e0c3a; -fx-text-fill: white;");
+        addToCartButton.setCursor(Cursor.HAND);
         
         
         book.getChildren().addAll(bookContent, addToCartButton);
@@ -116,5 +116,4 @@ public class BookListingsPage extends Page {
             	
     	return book;
     }
-    
 }
