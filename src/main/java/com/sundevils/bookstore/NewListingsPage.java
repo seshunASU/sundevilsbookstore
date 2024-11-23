@@ -1,5 +1,6 @@
-import java.util.Arrays;
+package com.sundevils.bookstore;
 
+import java.util.Arrays;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
@@ -21,9 +22,7 @@ import javafx.scene.text.Text;
 // TO-DO: BACK BUTTON
 
 public class NewListingsPage extends Page {
-
 	public NewListingsPage() {
-		
 		title = "Create New Listing";
         
         // Creating the grid layout for the login page
@@ -151,7 +150,5 @@ public class NewListingsPage extends Page {
 		vbox.getChildren().add(grid);
 		
 		contentPane.getChildren().add(grid);
-        contentPane.setStyle("-fx-background-color: rgba(255, 0, 0, 0.3);"); // TODO: remove
-        
 	}
 }

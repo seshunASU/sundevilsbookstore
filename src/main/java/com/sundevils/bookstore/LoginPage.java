@@ -122,33 +122,20 @@ public class LoginPage extends Page {
             } else {
                 errorText.setText("");
             }
-            
-            // if ((username.equals("Buyer") && password.equals("buy")) ||
-            // (username.equals("Seller") && password.equals("sell")) ||
-            // (username.equals("Admin") && password.equals("adm"))) {
-            //     Display role page
-            //     String role = username;
-            //     StackPane rolePage = new StackPane();
-            //     rolePage.setStyle("-fx-background-color: #111111;");
-            //     Text roleText = new Text(role);
-            //     roleText.setFont(Font.font("", FontWeight.BOLD, 50));
-            //     roleText.setFill(Color.DARKRED);
-            //     rolePage.getChildren().add(roleText);
-            //     Scene roleScene = new Scene(rolePage);
-            //     primaryStage.setScene(roleScene);
-            //     Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-            //     primaryStage.setWidth(screenBounds.getWidth());
-            //     primaryStage.setHeight(screenBounds.getHeight());
-            //     primaryStage.centerOnScreen();
-            // } else {
-            //     // Invalid Login message
-            //     Text errorText = new Text("Invalid Username or Password. Please try again.");
-            //     errorText.setFill(Color.RED);
-            //     grid.add(errorText, 1, 7);
-            // }
+        });
+
+        // Click Sign up button
+        signUpBtn.setOnAction(e -> {
+            LoginView loginView = App.getInstance().loginView;
+            loginView.setPage(loginView.signupPage);
+        });
+
+        // Click Forgot password button
+        forgotPasswordBtn.setOnAction(e -> {
+            LoginView loginView = App.getInstance().loginView;
+            loginView.setPage(loginView.forgotPasswordPage);
         });
 
         contentPane.getChildren().add(grid);
-        contentPane.setStyle("-fx-background-color: rgba(255, 0, 0, 0.3);"); // TODO: remove
     }
 }

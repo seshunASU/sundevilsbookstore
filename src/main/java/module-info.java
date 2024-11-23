@@ -1,6 +1,6 @@
 module com.sundevils.bookstore {
     requires transitive javafx.graphics;
-    requires javafx.controls;
+    requires transitive javafx.controls;
     requires javafx.fxml;
     requires transitive java.sql;
 

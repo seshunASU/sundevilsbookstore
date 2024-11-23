@@ -1,0 +1,55 @@
+#rootPane {
+    -fx-background-color: #111111;
+    -fx-padding: 0 50px 0 50px;
+}
+
+.tab-pane:top *.tab-header-area {
+    -fx-padding: 10px 0 0 0;
+    -fx-background-color: #111111;
+}
+
+.tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tab-pane{
+    -fx-tab-min-width: 90px;
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab{
+    -fx-background-insets: 0 0 0 0,0,0;
+    -fx-background-color: #1d1d1d;
+    -fx-pref-height: 40px;
+}
+
+.tab-pane .tab:selected{
+    -fx-background-color: #252525;
+}
+
+.tab-pane .tab:hover {
+    -fx-background-color: #242424;
+}
+
+.tab-pane .tab:selected:hover {
+    -fx-background-color: #333333;  /* Darker background when selected tab is hovered */
+}
+
+.tab .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #ffc425;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #ffc425;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-width: 1, 1;
+    -fx-border-color: #ffc425;
+    -fx-border-insets: -4 -4 -6 -5, -2 -2 -5 -3;
+    -fx-border-radius: 2, 1;
+}

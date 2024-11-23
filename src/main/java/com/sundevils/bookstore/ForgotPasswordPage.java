@@ -1,9 +1,8 @@
 package com.sundevils.bookstore;
-//import javafx.application.Application;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -13,23 +12,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 public class ForgotPasswordPage extends Page {
-    /*public static void main(String[] args) {
-        launch(args);
-    } */
+    public ForgotPasswordPage() {
+        title = "Forgot Password";
 
-    @Override
-    public void start(Stage primaryStage) {
-        GridPane forgotPasswordPageLayout = createForgotPasswordPage();
-        Scene scene = new Scene(forgotPasswordPageLayout, 800, 600);
-        primaryStage.setTitle("Forgot Password");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-    private GridPane createForgotPasswordPage() {
         // Create the grid layout
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -86,7 +73,7 @@ public class ForgotPasswordPage extends Page {
                 System.out.println("Reset email sent to: " + emailInput);
             }
         });
+
         contentPane.getChildren().add(grid);
-        //return grid;
     }
 }

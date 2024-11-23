@@ -11,9 +11,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-public class BookListingsPage extends Page {
-    public BookListingsPage() {
-        title = "Book Listings";
+public class ActiveListingsPage extends Page {
+    public ActiveListingsPage() {
+        title = "Active Listings";
         
         // TODO: clear copy & pasted code and actually make the page
 
@@ -26,7 +26,7 @@ public class BookListingsPage extends Page {
         grid.setStyle("-fx-background-color: #111111;");
 
         // Welcome Text
-        Text welcomeText = new Text("Placeholder Books Listings Page");
+        Text welcomeText = new Text("Placeholder Active Listings Page");
         welcomeText.setFont(Font.font("", FontWeight.BOLD, 48));
         welcomeText.setFill(Color.DARKRED);
 
@@ -35,7 +35,7 @@ public class BookListingsPage extends Page {
         grid.add(welcomePane, 0, 0, 2, 1);
 
         // Navigation Test Button
-        Button testBtn = new Button("Cart");
+        Button testBtn = new Button("New Listing");
         testBtn.setStyle("-fx-background-color: darkred; -fx-text-fill: yellow;");
         testBtn.setPrefSize(300, 60);
         testBtn.setFont(Font.font("", FontWeight.BOLD, 20));
@@ -46,8 +46,8 @@ public class BookListingsPage extends Page {
 
         // Test code
         testBtn.setOnAction(e -> {
-            BuyerView buyerView = App.getInstance().buyerView;
-            // buyerView.setPage(buyerView.cartViewPage);
+            SellerView sellerView = App.getInstance().sellerView;
+            sellerView.setPage(sellerView.newListingsPage);
         });
     }
 }

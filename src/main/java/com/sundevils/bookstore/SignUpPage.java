@@ -1,7 +1,5 @@
 package com.sundevils.bookstore;
-//import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
@@ -16,21 +14,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-public class SignUpPage extends Page { //formerly Application
-
-    @Override
-    public void start(Stage primaryStage) {
-        // Create an instance of SignUpPage layout
-        GridPane signUpPageLayout = createSignUpPage();
-
-        // Set the scene with the SignUpPage layout
-        Scene scene = new Scene(signUpPageLayout, 800, 600);
-        primaryStage.setTitle("Sign Up");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-    private GridPane createSignUpPage() {
+public class SignUpPage extends Page {
+    public SignUpPage() {
+        title = "Sign up";
 
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -114,11 +100,7 @@ public class SignUpPage extends Page { //formerly Application
                 errorText.setText("");
             }
         });
+
         contentPane.getChildren().add(grid);
-        //return grid;
     }
-    /*
-    public static void main(String[] args) {
-        launch(args);
-    } */
 }

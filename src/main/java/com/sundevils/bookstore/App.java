@@ -13,6 +13,7 @@ public class App extends Application  {
 
     public LoginView loginView;
     public BuyerView buyerView;
+    public SellerView sellerView;
 
     @Override
     public void start(Stage primaryStage) {
@@ -25,6 +26,7 @@ public class App extends Application  {
         
         loginView = new LoginView();
         buyerView = new BuyerView();
+        sellerView = new SellerView();
 
         setActiveView(buyerView);
 
