@@ -28,7 +28,7 @@ public class App extends Application  {
         buyerView = new BuyerView();
         sellerView = new SellerView();
 
-        setActiveView(buyerView);
+        setActiveView(loginView);
 
         // Set singleton
         instance = this;

@@ -8,6 +8,9 @@ public abstract class Page {
     protected String title; // TODO: set window title to this
     protected Tab tab;
 
+    protected boolean showBackButton;
+    protected boolean showAccountButton;
+
     public Page() {
         contentPane = new StackPane();
         title = "";
