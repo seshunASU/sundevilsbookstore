@@ -4,17 +4,17 @@ public class Book {
     private int id;
     private String title;
     private String author;
-    private int year;
+    private String year;
     private double originalPrice;
-    private BookCategory bookCategory;
+    private BookCategory category;
 
-    public Book(int id, String title, String author, int year, double originalPrice, BookCategory bookCategory) {
+    public Book(int id, String title, String author, String year, double originalPrice, BookCategory category) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.year = year;
         this.originalPrice = originalPrice;
-        this.bookCategory = bookCategory;
+        this.category = category;
     }
 
     public int getId() {
@@ -29,7 +29,7 @@ public class Book {
         return author;
     }
     
-    public int getYear() {
+    public String getYear() {
         return year;
     }
     
@@ -37,7 +37,7 @@ public class Book {
         return originalPrice;
     }
     
-    public BookCategory getBookCategory() {
-        return bookCategory;
+    public BookCategory getCategory() {
+        return category;
     }
 }

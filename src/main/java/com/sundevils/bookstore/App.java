@@ -16,6 +16,8 @@ public class App extends Application  {
     private Database db;
     
     public UserDB userDB;
+    public BookDB bookDB;
+    public ListingDB listingDB;
 
     public LoginView loginView;
     public BuyerView buyerView;
@@ -29,6 +31,8 @@ public class App extends Application  {
         // Databases
         db = new Database();
         userDB = new UserDB(db);
+        bookDB = new BookDB(db);
+        listingDB = new ListingDB(db);
 
         // UI
         stage = primaryStage;

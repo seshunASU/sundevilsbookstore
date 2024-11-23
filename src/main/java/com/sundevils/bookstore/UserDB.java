@@ -76,6 +76,30 @@ public class UserDB {
         }
     }
 
+    public User getUserFromId(int id) {
+        String query = "SELECT * FROM users WHERE id = ?";
+        
+        try (PreparedStatement pstmt = db.prepareStatement(query)) {
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            
+            if (rs.next()) {
+                return new User(
+                    rs.getInt("id"),
+                    rs.getString("displayName"),
+                    rs.getString("username"),
+                    rs.getString("password"),
+                    AccountType.fromInt(rs.getInt("type")),
+                    rs.getDouble("creationTime")
+                );
+            }
+        } catch (SQLException e) {
+            System.err.println("Error finding book by id: " + e.getMessage()); // TODO: throw exception?
+        }
+        
+        return null;
+    }
+
     public ArrayList<HashMap<String, Object>> findUsersByName(String username, boolean showPending) {
         ArrayList<HashMap<String, Object>> users = new ArrayList<>();
         String query = "SELECT * FROM users WHERE username = ?";
