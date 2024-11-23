@@ -1,11 +1,10 @@
 package com.sundevils.bookstore;
-import javafx.scene.control.Tab;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 public abstract class Page {
     protected StackPane contentPane;
-    protected String title; // TODO: set window title to this
+    protected String title;
     protected Tab tab;
 
     protected boolean showBackButton;
@@ -16,6 +15,10 @@ public abstract class Page {
         title = "";
     }
 
+    public String getTitle() {
+        return title;
+    }
+    
     public Pane getContentPane() {
         return contentPane;
     }
@@ -26,9 +29,5 @@ public abstract class Page {
 
     public void associateTab(Tab tab) {
         this.tab = tab;
-
-        if (tab.getContent() == null) {
-            tab.setContent(contentPane);
-        }
     }
 }

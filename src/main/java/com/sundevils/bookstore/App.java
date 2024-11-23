@@ -34,7 +34,7 @@ public class App extends Application  {
         adminView = new AdminView();
 
         // Finalize UI
-        View activeView = loginView;
+        activeView = loginView;
         scene = new Scene(activeView.getContentPane());
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         stage.setScene(scene);
@@ -45,11 +45,31 @@ public class App extends Application  {
 
         // Set singleton
         instance = this;
+
+        // Finalizing
+        App.updateWindowTitle();
     }
 
+    public View getActiveView() {
+        return activeView;
+    }
+    
     public void setActiveView(View view) {
         activeView = view;
         scene.setRoot(view.getContentPane());
+        App.updateWindowTitle();
+    }
+
+    public void setTitle(String title) {
+        stage.setTitle(title);
+    }
+
+    public static void updateWindowTitle() {
+        App app = App.getInstance();
+
+        if (app != null) {
+            app.setTitle("Sundevils Bookstore - " + app.getActiveView().getActivePageTitle());
+        }
     }
 
     // Singleton methods

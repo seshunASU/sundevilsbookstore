@@ -17,9 +17,15 @@ public abstract class View {
         return pane;
     }
 
+    public String getActivePageTitle() {
+        return activePage.getTitle();
+    }
+
     protected void setPage(Page page) {
         activePage = page;
         pane.getChildren().clear();
         pane.getChildren().add(page.getContentPane());
+
+        App.updateWindowTitle();
     }
 }

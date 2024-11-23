@@ -1,5 +1,4 @@
 package com.sundevils.bookstore;
-import javafx.scene.control.Tab;
 
 public class SellerView extends UserView {
     private Tab activeListingsTab;
@@ -19,9 +18,9 @@ public class SellerView extends UserView {
         newListingsPage = new NewListingsPage();
         salesHistoryPage = new SalesHistoryPage();
 
-        activeListingsPage.associateTab(activeListingsTab);
-        newListingsPage.associateTab(activeListingsTab);
-        salesHistoryPage.associateTab(salesHistoryTab);
+        activeListingsTab.associatePage(activeListingsPage);
+        activeListingsTab.associatePage(newListingsPage);
+        salesHistoryTab.associatePage(salesHistoryPage);
         
         tabPane.getTabs().addAll(activeListingsTab, salesHistoryTab);
         

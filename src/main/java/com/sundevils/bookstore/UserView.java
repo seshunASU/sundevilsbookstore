@@ -1,4 +1,5 @@
 package com.sundevils.bookstore;
+
 import javafx.scene.layout.Pane;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
@@ -20,9 +21,17 @@ public abstract class UserView extends View {
         AnchorPane.setRightAnchor(tabPane, 0.0);
         AnchorPane.setLeftAnchor(tabPane, 0.0);
         AnchorPane.setBottomAnchor(tabPane, 0.0);
-        anchor.getChildren().add(tabPane);
-        
         anchor.setId("rootPane");
+
+        anchor.getChildren().add(tabPane);
+    
+        // Tab click function
+        tabPane.getSelectionModel().selectedItemProperty().addListener((ov, oldTab, newTab) -> {
+            if (newTab instanceof Tab) {
+                activePage = ((Tab) newTab).activePage;
+                App.updateWindowTitle();
+            }
+        });
     }
 
     @Override
@@ -33,7 +42,11 @@ public abstract class UserView extends View {
     @Override
     protected void setPage(Page page) {
         activePage = page;
-        page.getTab().setContent(page.getContentPane());
-        tabPane.getSelectionModel().select(page.getTab());
+
+        Tab pageTab = page.getTab();
+        pageTab.setPage(page);;
+        tabPane.getSelectionModel().select(pageTab);
+
+        App.updateWindowTitle();
     }
 }
