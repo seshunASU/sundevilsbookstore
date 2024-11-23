@@ -123,9 +123,11 @@ public class LoginPage extends Page {
                 App app = App.getInstance();
                 switch(userAccount.type) {
                     case BUYER:
-                        app.setActiveView(app.buyerView);                        
+                        app.loggedInUser = userAccount.convertToBuyer();
+                        app.setActiveView(app.buyerView);
                         break;
                     case SELLER:
+                        app.loggedInUser = userAccount.convertToSeller();
                         app.setActiveView(app.sellerView);
                         break;
                     case ADMIN:

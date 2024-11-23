@@ -10,6 +10,8 @@ import javafx.util.Pair;
 public class App extends Application  {
     private static App instance;
 
+    public User loggedInUser;
+
     private View activeView;
     private Stage stage;
     private Scene scene;
@@ -84,6 +86,18 @@ public class App extends Application  {
     // Singleton methods
     public static App getInstance() {
         return instance;
+    }
+
+    public static User getLoggedInUser() {
+        return App.getInstance().loggedInUser;
+    }
+
+    public static Buyer getLoggedInBuyer() {
+        return App.getLoggedInUser().convertToBuyer();
+    }
+
+    public static Seller getLoggedInSeller() {
+        return App.getLoggedInUser().convertToSeller();
     }
     
     public static void registerPage(Page page, View view) {

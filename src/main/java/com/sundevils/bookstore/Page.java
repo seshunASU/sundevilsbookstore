@@ -7,7 +7,7 @@ public abstract class Page {
     protected String title;
     protected Tab tab;
 
-    public boolean showSignoutButton;
+    public boolean showSignoutButton; // TODO: make it clear app.loggedInUser
     public String backPage;
 
     public Page() {
