@@ -46,4 +46,9 @@ public class Listing {
     public double getCreationTime() {
         return creationTime;
     }
+
+    public void updateStatus(ListingStatus newStatus) {
+        App app = App.getInstance();
+        app.listingDB.updateStatus(id, newStatus.getValue());
+    }
 }

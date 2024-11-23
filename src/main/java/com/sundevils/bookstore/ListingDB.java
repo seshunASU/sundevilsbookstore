@@ -89,6 +89,21 @@ public class ListingDB {
         }
     }
 
+    public boolean updateStatus(int id, int newStatus) {
+        String updateQuery = "UPDATE listings SET status = ? WHERE id = ?";
+    
+        try (PreparedStatement pstmt = db.prepareStatement(updateQuery)) {
+            pstmt.setInt(1, newStatus);
+            pstmt.setInt(2, id);
+    
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            System.err.println("Error updating listing status: " + e.getMessage());
+            return false;
+        }
+    }
+
     public Listing getListingFromId(int id) {
         String query = "SELECT * FROM listings WHERE id = ?";
         

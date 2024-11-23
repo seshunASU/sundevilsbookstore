@@ -17,6 +17,8 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.Priority;
 
 public class BookListingsPage extends Page {
+	private GridPane bookGrid;
+
     public BookListingsPage() {
         title = "Book Listings";
         showSignoutButton = true;
@@ -31,6 +33,7 @@ public class BookListingsPage extends Page {
 		cartButton.setCursor(Cursor.HAND);
 		cartButton.setOnAction(e -> {
             BuyerView buyerView = App.getInstance().buyerView;
+			buyerView.cartPage.updateCart();
             buyerView.setPage(buyerView.cartPage);
         });
 		
@@ -50,7 +53,7 @@ public class BookListingsPage extends Page {
 		HBox bookOptions = new HBox(20, categoryComboBox, conditionComboBox);
 		bookOptions.setPadding(new Insets(10, 50, 0, 50));
 		
-		GridPane bookGrid = new GridPane();
+		bookGrid = new GridPane();
 		bookGrid.setHgap(50);
 		bookGrid.setVgap(20);
 		bookGrid.setPadding(new Insets(20, 50, 50, 50));
@@ -72,21 +75,7 @@ public class BookListingsPage extends Page {
 			bookGrid.getRowConstraints().add(row);
 		}
 		
-		int index = 0;
-		for (Listing listing : App.getInstance().listingDB.getListings()) {
-			if (listing.getStatus() != ListingStatus.PENDING) {
-				VBox bookItem = createBookItem(listing);
-                bookItem.setMaxSize(120, 275);
-				int col = index % 7;
-				int row = index / 7;
-
-				bookGrid.add(bookItem, col, row);
-				index++;
-                if (index >= 16) {
-                    break;
-                }
-			}
-		}
+		updateBookListings();
 
 		ScrollPane scrollPane = new ScrollPane();
 		scrollPane.setContent(bookGrid);
@@ -101,6 +90,23 @@ public class BookListingsPage extends Page {
 		
 		contentPane.getChildren().addAll(vbox);
     }    
+
+	public void updateBookListings() {
+		bookGrid.getChildren().clear();
+		
+		int index = 0;
+		for (Listing listing : App.getInstance().listingDB.getListings()) {
+			if (listing.getStatus() == ListingStatus.AVAILABLE) {
+				VBox bookItem = createBookItem(listing);
+                bookItem.setMaxSize(120, 275);
+				int col = index % 7;
+				int row = index / 7;
+
+				bookGrid.add(bookItem, col, row);
+				index++;
+			}
+		}
+	}
 
 	public VBox createBookItem(Listing listing) {
     	VBox book = new VBox(5);
@@ -123,7 +129,7 @@ public class BookListingsPage extends Page {
 		Label yearLabel = new Label(String.valueOf(listing.getBook().getYear()));
         yearLabel.setStyle("-fx-text-fill: #FFC425;");
 		
-		Label inventoryLabel = new Label("Listings: " + listing.getStatus());
+		Label inventoryLabel = new Label("Listings: 1"); // TODO: do
         inventoryLabel.setStyle("-fx-text-fill: #FFC425;");
         
 		Label priceLabel = new Label("$" + listing.getPrice());
@@ -139,7 +145,9 @@ public class BookListingsPage extends Page {
         addToCartButton.setStyle("-fx-font-size: 12px; -fx-background-color: #8e0c3a; -fx-text-fill: white;");
         addToCartButton.setCursor(Cursor.HAND);
 		addToCartButton.setOnAction(event -> {
-			// CartManager.incrementBookCartNumber();
+			Buyer buyer = App.getLoggedInBuyer();
+			buyer.cart.add(listing);
+			addToCartButton.setDisable(true);
 		});
         
         

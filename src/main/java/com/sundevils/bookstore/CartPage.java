@@ -66,11 +66,15 @@ public class CartPage extends Page {
         root.setRight(checkoutArea);
 
         payButton.setOnAction(e -> {
-            // TODO: update listings in database
-            // TODO: update bookListingsPage
+            ArrayList<Listing> cart = App.getLoggedInBuyer().cart;
+            for (Listing cartListing : cart) {
+                cartListing.updateStatus(ListingStatus.UNAVAILABLE);
+            }
             App.getLoggedInBuyer().cart.clear();
-            
+
             BuyerView buyerView = App.getInstance().buyerView;
+            buyerView.bookListingsPage.updateBookListings();
+            
             buyerView.setPage(buyerView.bookListingsPage);
         });
 
