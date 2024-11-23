@@ -31,7 +31,6 @@ public class BookListingsPage extends Page {
 		cartButton.setCursor(Cursor.HAND);
 		cartButton.setOnAction(e -> {
             BuyerView buyerView = App.getInstance().buyerView;
-			buyerView.cartPage.updateCart();
             buyerView.setPage(buyerView.cartPage);
         });
 		
@@ -64,6 +63,7 @@ public class BookListingsPage extends Page {
 	            	bookGrid.getColumnConstraints().add(column);
 		}
 		
+		
 		for (int i = 0; i < 7; i++) {
 			RowConstraints row = new RowConstraints();
 			row.setMinHeight(275);
@@ -72,18 +72,19 @@ public class BookListingsPage extends Page {
 			bookGrid.getRowConstraints().add(row);
 		}
 		
-		for (int i = 0; i < 49; i++) {
-			VBox book = createBookItem();
-			book.setMaxSize(120, 275);
-			
-			bookGrid.add(book, i % 7, i / 7);			
-		}
-		
-
-		// Iterate listings
+		int index = 0;
 		for (Listing listing : App.getInstance().listingDB.getListings()) {
 			if (listing.getStatus() != ListingStatus.PENDING) {
-				// code here
+				VBox bookItem = createBookItem(listing);
+                bookItem.setMaxSize(120, 275);
+				int col = index % 7;
+				int row = index / 7;
+
+				bookGrid.add(bookItem, col, row);
+				index++;
+                if (index >= 16) {
+                    break;
+                }
 			}
 		}
 
@@ -101,7 +102,7 @@ public class BookListingsPage extends Page {
 		contentPane.getChildren().addAll(vbox);
     }    
 
-	public VBox createBookItem() {
+	public VBox createBookItem(Listing listing) {
     	VBox book = new VBox(5);
     	   	
     	Region bookCover = new Region();
@@ -113,19 +114,19 @@ public class BookListingsPage extends Page {
         VBox bookDetails = new VBox();
         bookDetails.setAlignment(Pos.CENTER);
 
-        Label titleLabel = new Label("Book Title");
+        Label titleLabel = new Label(listing.getBook().getTitle());
         titleLabel.setStyle("-fx-text-fill: #FFC425;");
         
-		Label authorLabel = new Label("Author");
+		Label authorLabel = new Label(listing.getBook().getAuthor());
         authorLabel.setStyle("-fx-text-fill: #FFC425;");
         
-		Label yearLabel = new Label("2024");
+		Label yearLabel = new Label(String.valueOf(listing.getBook().getYear()));
         yearLabel.setStyle("-fx-text-fill: #FFC425;");
 		
-		Label inventoryLabel = new Label("Listings: 5");
+		Label inventoryLabel = new Label("Listings: " + listing.getStatus());
         inventoryLabel.setStyle("-fx-text-fill: #FFC425;");
         
-		Label priceLabel = new Label("$15.00");
+		Label priceLabel = new Label("$" + listing.getPrice());
         priceLabel.setStyle("-fx-font-size: 15px; -fx-text-fill: #8e0c3a;");
                 
         bookDetails.getChildren().addAll(titleLabel, authorLabel, yearLabel, inventoryLabel, priceLabel);
@@ -148,3 +149,4 @@ public class BookListingsPage extends Page {
     	return book;
     }
 }
+
