@@ -39,6 +39,10 @@ public class Database {
     public PreparedStatement prepareStatement(String sql) throws SQLException {
         return connection.prepareStatement(sql);
     }
+
+    public Statement createStatement() throws SQLException {
+        return connection.createStatement();
+    }
     
     // modify database
     public boolean executeUpdate(String query) {
@@ -53,7 +57,8 @@ public class Database {
 
     // retrieve data
     public ResultSet executeQuery(String query) {
-        try (Statement stmt = connection.createStatement()) {
+        try {
+            Statement stmt = connection.createStatement();
             return stmt.executeQuery(query);
         } catch (SQLException e) {
             System.err.println("Query execution failed: " + e.getMessage());

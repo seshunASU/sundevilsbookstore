@@ -9,9 +9,10 @@ import java.util.HashMap;
 public class UserDB {
     private Database db;
 
-    public UserDB(Database db) { // TODO: throw exception on failure
+    public UserDB(Database db) {
         this.db = db;
         createTable();
+        testInit();
     }
 
     public boolean createTable() {
@@ -30,10 +31,35 @@ public class UserDB {
         System.err.println("Error creating the users table.");
         return false;
     }
+
+    private void testInit() {
+        // Check if first time running
+        String checkTableQuery = "SELECT count(*) FROM users";
+        ResultSet rs = db.executeQuery(checkTableQuery);
+        boolean firstTime = false;
+
+        try {
+            if (rs.next()) {
+                firstTime = rs.getInt(1) == 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // Fill table with dummy values
+        if (firstTime) {
+            addUser("Pending User", "pending", "pass", AccountType.PENDING.getValue());
+            addUser("Buyer User", "buyer", "pass", AccountType.BUYER.getValue());
+            addUser("Seller User", "seller", "pass", AccountType.SELLER.getValue());
+            addUser("Admin User", "admin", "pass", AccountType.ADMIN.getValue());
+        }
+    }
     
-    public boolean addUser(String displayName, String username, String password, int type, double creationTime) {
+    public boolean addUser(String displayName, String username, String password, int type) {
         String insertQuery = "INSERT INTO users (displayName, username, password, type, creationTime) "
                 + "VALUES (?, ?, ?, ?, ?)";
+
+        double creationTime = System.currentTimeMillis() / 1000.0;
         
         try (PreparedStatement pstmt = db.prepareStatement(insertQuery)) {
             pstmt.setString(1, displayName);
