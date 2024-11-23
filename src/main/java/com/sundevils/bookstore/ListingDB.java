@@ -48,7 +48,22 @@ public class ListingDB {
 
         // Fill table with dummy values
         if (firstTime) {
-            
+            addListing(1, 0, 2, 3, 40.0);
+            addListing(2, 2, 2, 3, 40.0);
+            addListing(3, 2, 2, 3, 20.0);
+            addListing(4, 1, 2, 3, 30.0);
+            addListing(5, 0, 2, 3, 60.0);
+            addListing(6, 0, 2, 3, 20.0);
+            addListing(7, 1, 2, 3, 40.0);
+            addListing(8, 0, 2, 3, 65.0);
+            addListing(9, 2, 2, 3, 5.0);
+            addListing(10, 0, 2, 3, 25.0);
+            addListing(11, 1, 2, 3, 10.0);
+            addListing(12, 1, 2, 3, 15.0);
+            addListing(13, 2, 2, 3, 20.0);
+            addListing(14, 2, 2, 3, 30.0);
+            addListing(15, 2, 2, 3, 40.0);
+            addListing(16, 1, 2, 3, 55.0);
         }
     }
     
