@@ -25,6 +25,14 @@ public class User {
         return passwordInput.equals(password);
     }
     
+    public Buyer convertToBuyer() {
+        return new Buyer(id, displayName, username, password, creationTime);
+    }
+    
+    public Seller convertToSeller() {
+        return new Seller(id, displayName, username, password, creationTime);
+    }
+
     // Class methods
     public static ArrayList<User> findUsersByName(String username, boolean showPending) {
         ArrayList<User> users = new ArrayList<>();

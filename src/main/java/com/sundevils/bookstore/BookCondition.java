@@ -1,21 +1,20 @@
 package com.sundevils.bookstore;
 
-public enum AccountType {
-    PENDING(0),
-    BUYER(1),
-    SELLER(2),
-    ADMIN(3);
-
+public enum BookCondition {
+    USEDLIKENEW(0),
+    MODERATELYUSED(1),
+    HEAVILYUSED(2);
+    
     private final int value;
 
-    AccountType(int value) {
+    BookCondition(int value) {
         this.value = value;
     }
 
     public int getValue() { return value; }
 
-    public static AccountType fromInt(int i) {
-        for (AccountType enumValue : AccountType.values()) {
+    public static BookCondition fromInt(int i) {
+        for (BookCondition enumValue : BookCondition.values()) {
             if (enumValue.getValue() == i) {
                 return enumValue;
             }

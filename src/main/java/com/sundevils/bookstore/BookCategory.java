@@ -1,21 +1,21 @@
 package com.sundevils.bookstore;
 
-public enum AccountType {
-    PENDING(0),
-    BUYER(1),
-    SELLER(2),
-    ADMIN(3);
-
+public enum BookCategory {
+    NATURAL_SCIENCE(0),
+    MATH(1),
+    ENGLISH(2),
+    COMPUTER(3);
+    
     private final int value;
 
-    AccountType(int value) {
+    BookCategory(int value) {
         this.value = value;
     }
 
     public int getValue() { return value; }
 
-    public static AccountType fromInt(int i) {
-        for (AccountType enumValue : AccountType.values()) {
+    public static BookCategory fromInt(int i) {
+        for (BookCategory enumValue : BookCategory.values()) {
             if (enumValue.getValue() == i) {
                 return enumValue;
             }

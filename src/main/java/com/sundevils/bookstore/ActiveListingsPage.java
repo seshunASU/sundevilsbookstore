@@ -15,14 +15,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class ActiveListingsPage extends Page {
-	public class Listing {
+	public class Listing2 {
 		String status;
 		String title;
 		String condition;
 		double sellPrice;
 		int quantity;		
 	
-        public Listing(String title, String condition, double sellPrice, int quantity, String status) {
+        public Listing2(String title, String condition, double sellPrice, int quantity, String status) {
             this.title = title;
             this.condition = condition;
             this.sellPrice = sellPrice;
@@ -89,13 +89,13 @@ public class ActiveListingsPage extends Page {
 		newListing.setPadding(new Insets(35));
 		newListing.setAlignment(Pos.BOTTOM_RIGHT);
 		
-		TableView<Listing> listingsTable = new TableView<Listing>();
-		TableColumn<Listing, String> statusCol = new TableColumn<Listing, String>("Status");
-		TableColumn<Listing, String> titleCol = new TableColumn<Listing, String>("Title");
-		TableColumn<Listing, String> conditionCol = new TableColumn<>("Condition");
-		TableColumn<Listing, Double> sellPriceCol = new TableColumn<Listing, Double>("Sell Price");
-		TableColumn<Listing, Integer> priceCol = new TableColumn<Listing, Integer>("Quantity");
-		TableColumn<Listing, Void> deleteCol = new TableColumn<Listing, Void>("");
+		TableView<Listing2> listingsTable = new TableView<Listing2>();
+		TableColumn<Listing2, String> statusCol = new TableColumn<Listing2, String>("Status");
+		TableColumn<Listing2, String> titleCol = new TableColumn<Listing2, String>("Title");
+		TableColumn<Listing2, String> conditionCol = new TableColumn<>("Condition");
+		TableColumn<Listing2, Double> sellPriceCol = new TableColumn<Listing2, Double>("Sell Price");
+		TableColumn<Listing2, Integer> priceCol = new TableColumn<Listing2, Integer>("Quantity");
+		TableColumn<Listing2, Void> deleteCol = new TableColumn<Listing2, Void>("");
 		
 		
 		titleCol.setMinWidth(200);
@@ -114,9 +114,9 @@ public class ActiveListingsPage extends Page {
         applyTextColor(priceCol);        
            
         listingsTable.setRowFactory(tv -> {
-            return new TableRow<Listing>() {
+            return new TableRow<Listing2>() {
                 @Override
-                protected void updateItem(Listing item, boolean empty) {
+                protected void updateItem(Listing2 item, boolean empty) {
                     super.updateItem(item, empty);
                     
                     if (empty || item == null) {
@@ -143,12 +143,12 @@ public class ActiveListingsPage extends Page {
         });
         
         deleteCol.setCellFactory(col -> {
-            TableCell<Listing, Void> cell = new TableCell<Listing, Void>() {
+            TableCell<Listing2, Void> cell = new TableCell<Listing2, Void>() {
                 private final Button deleteButton = new Button("Delete");
 
                 {
                     deleteButton.setOnAction(event -> {
-                        Listing rowData = getTableView().getItems().get(getIndex());
+                        Listing2 rowData = getTableView().getItems().get(getIndex());
                         getTableView().getItems().remove(rowData);
                     });
                 }
@@ -167,35 +167,35 @@ public class ActiveListingsPage extends Page {
         });
         
 		@SuppressWarnings("unchecked")
-		TableColumn<Listing, ?>[] columns = new TableColumn[] {statusCol, titleCol, conditionCol, sellPriceCol, priceCol, deleteCol};
+		TableColumn<Listing2, ?>[] columns = new TableColumn[] {statusCol, titleCol, conditionCol, sellPriceCol, priceCol, deleteCol};
 		listingsTable.getColumns().addAll(columns);
 		listingsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 		
-		ObservableList<Listing> bookData = FXCollections.observableArrayList(
-            new Listing("Book 1", "Used, Like New", 20.00, 5, "Pending"),
-            new Listing("Book 2", "Heavily Used", 10.00, 10, "Active"),
-            new Listing("Book 3", "Used, Like New", 25.00, 5, "Pending"),
-            new Listing("Book 4", "Moderately Used", 25.00, 12, "Active"),
-            new Listing("Book 1", "Used, Like New", 20.00, 5, "Pending"),
-            new Listing("Book 2", "Heavily Used", 10.00, 10, "Active"),
-            new Listing("Book 3", "Used, Like New", 25.00, 5, "Pending"),
-            new Listing("Book 4", "Moderately Used", 25.00, 12, "Active"),
-            new Listing("Book 1", "Used, Like New", 20.00, 5, "Pending"),
-            new Listing("Book 2", "Heavily Used", 10.00, 10, "Active"),
-            new Listing("Book 3", "Used, Like New", 25.00, 5, "Pending"),
-            new Listing("Book 4", "Moderately Used", 25.00, 12, "Active"),
-            new Listing("Book 1", "Used, Like New", 20.00, 5, "Pending"),
-            new Listing("Book 2", "Heavily Used", 10.00, 10, "Active"),
-            new Listing("Book 3", "Used, Like New", 25.00, 5, "Pending"),
-            new Listing("Book 4", "Moderately Used", 25.00, 12, "Active"),
-            new Listing("Book 1", "Used, Like New", 20.00, 5, "Pending"),
-            new Listing("Book 2", "Heavily Used", 10.00, 10, "Active"),
-            new Listing("Book 3", "Used, Like New", 25.00, 5, "Pending"),
-            new Listing("Book 4", "Moderately Used", 25.00, 12, "Active"),
-            new Listing("Book 1", "Used, Like New", 20.00, 5, "Pending"),
-            new Listing("Book 2", "Heavily Used", 10.00, 10, "Active"),
-            new Listing("Book 3", "Used, Like New", 25.00, 5, "Pending"),
-            new Listing("Book 4", "Moderately Used", 25.00, 12, "Active")
+		ObservableList<Listing2> bookData = FXCollections.observableArrayList(
+            new Listing2("Book 1", "Used, Like New", 20.00, 5, "Pending"),
+            new Listing2("Book 2", "Heavily Used", 10.00, 10, "Active"),
+            new Listing2("Book 3", "Used, Like New", 25.00, 5, "Pending"),
+            new Listing2("Book 4", "Moderately Used", 25.00, 12, "Active"),
+            new Listing2("Book 1", "Used, Like New", 20.00, 5, "Pending"),
+            new Listing2("Book 2", "Heavily Used", 10.00, 10, "Active"),
+            new Listing2("Book 3", "Used, Like New", 25.00, 5, "Pending"),
+            new Listing2("Book 4", "Moderately Used", 25.00, 12, "Active"),
+            new Listing2("Book 1", "Used, Like New", 20.00, 5, "Pending"),
+            new Listing2("Book 2", "Heavily Used", 10.00, 10, "Active"),
+            new Listing2("Book 3", "Used, Like New", 25.00, 5, "Pending"),
+            new Listing2("Book 4", "Moderately Used", 25.00, 12, "Active"),
+            new Listing2("Book 1", "Used, Like New", 20.00, 5, "Pending"),
+            new Listing2("Book 2", "Heavily Used", 10.00, 10, "Active"),
+            new Listing2("Book 3", "Used, Like New", 25.00, 5, "Pending"),
+            new Listing2("Book 4", "Moderately Used", 25.00, 12, "Active"),
+            new Listing2("Book 1", "Used, Like New", 20.00, 5, "Pending"),
+            new Listing2("Book 2", "Heavily Used", 10.00, 10, "Active"),
+            new Listing2("Book 3", "Used, Like New", 25.00, 5, "Pending"),
+            new Listing2("Book 4", "Moderately Used", 25.00, 12, "Active"),
+            new Listing2("Book 1", "Used, Like New", 20.00, 5, "Pending"),
+            new Listing2("Book 2", "Heavily Used", 10.00, 10, "Active"),
+            new Listing2("Book 3", "Used, Like New", 25.00, 5, "Pending"),
+            new Listing2("Book 4", "Moderately Used", 25.00, 12, "Active")
         );
 		
 		listingsTable.setItems(bookData);
@@ -206,8 +206,8 @@ public class ActiveListingsPage extends Page {
 		contentPane.getChildren().add(vbox);
 	}
 
-	private <T> void applyTextColor(TableColumn<Listing, T> column) {
-	    column.setCellFactory(col -> new TableCell<Listing, T>() {
+	private <T> void applyTextColor(TableColumn<Listing2, T> column) {
+	    column.setCellFactory(col -> new TableCell<Listing2, T>() {
 	        @Override
 	        protected void updateItem(T item, boolean empty) {
 	            super.updateItem(item, empty);

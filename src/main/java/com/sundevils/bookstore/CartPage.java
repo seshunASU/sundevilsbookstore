@@ -16,7 +16,7 @@ public class CartPage extends Page {
     private Label taxLabel;
     private Label totalLabel;
     private VBox cartItemsContainer;
-    private List<CartItem> cartItems = new ArrayList<>();
+    private List<CartItem2> cartItems = new ArrayList<>();
 
     public CartPage() {
         title = "Shopping Cart";
@@ -44,7 +44,7 @@ public class CartPage extends Page {
 
         //CHANGE to i<BOOKCARTNUMBER !!!IMPORTANT!!!
         for (int i = 0; i < 6; i++) {
-            CartItem cartItem = new CartItem("Book Title " + (i + 1), "Author " + (i + 1), 5.0);
+            CartItem2 cartItem = new CartItem2("Book Title " + (i + 1), "Author " + (i + 1), 5.0);
             cartItems.add(cartItem);
             cartItemsContainer.getChildren().add(cartItem.createBookItem());
             if (i < 5) { // CHANGE to i<CARTNUMBER-1 !!!IMPORTANT!!!
@@ -83,7 +83,7 @@ public class CartPage extends Page {
 
     private void updateTotals() {
         double subtotal = 0;
-        for (CartItem item : cartItems) {
+        for (CartItem2 item : cartItems) {
             subtotal += item.calculateSubtotal();
         }
         double tax = subtotal * 0.07;
@@ -93,7 +93,7 @@ public class CartPage extends Page {
         totalLabel.setText(String.format("Total: $%.2f", total));
     }
 
-    private class CartItem {
+    private class CartItem2 {
         private Spinner<Integer> quantitySpinner;
         private ComboBox<String> conditionComboBox;
         private Label priceLabel;
@@ -103,7 +103,7 @@ public class CartPage extends Page {
         private String author;
         private double basePrice;
 
-        public CartItem(String title, String author, double basePrice) {
+        public CartItem2(String title, String author, double basePrice) {
             //IMPORT book details from book database !!!IMPORTANT!!!
             this.title = title;
             this.author = author;
