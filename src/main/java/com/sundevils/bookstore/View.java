@@ -1,5 +1,5 @@
 package com.sundevils.bookstore;
-import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 public abstract class View {
@@ -7,18 +7,14 @@ public abstract class View {
 
     protected Page activePage;
     protected StackPane pane;
-    protected Scene scene;
 
     public View() {
         pane = new StackPane();
-        scene = new Scene(pane);
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
-        
         pane.setId("rootPane");
     }
 
-    public Scene getScene() {
-        return scene;
+    public Pane getContentPane() {
+        return pane;
     }
 
     protected void setPage(Page page) {

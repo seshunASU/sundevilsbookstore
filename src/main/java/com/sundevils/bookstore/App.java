@@ -1,12 +1,15 @@
 package com.sundevils.bookstore;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.scene.Scene;
 
 public class App extends Application  {
     private static App instance;
 
     private View activeView;
     private Stage stage;
+    private Scene scene;
     private Database db;
     
     public UserDB userDB;
@@ -30,7 +33,11 @@ public class App extends Application  {
         sellerView = new SellerView();
         adminView = new AdminView();
 
-        setActiveView(loginView);
+        // Finalize UI
+        View activeView = loginView;
+        scene = new Scene(activeView.getContentPane());
+        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        stage.setScene(scene);
 
         stage.setMinWidth(1000);
         stage.setMinHeight(720);
@@ -42,7 +49,7 @@ public class App extends Application  {
 
     public void setActiveView(View view) {
         activeView = view;
-        stage.setScene(view.getScene());
+        scene.setRoot(view.getContentPane());
     }
 
     // Singleton methods
