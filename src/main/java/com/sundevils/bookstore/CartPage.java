@@ -43,7 +43,7 @@ public class CartPage extends Page {
         cartItemsContainer.setStyle("-fx-background-color: #111111;");
 
         for (int i = 0; i < CartManager.getBookCartNumber(); i++) {
-            CartItem cartItem = new CartItem("Book Title " + (i + 1), "Author " + (i + 1), 5.0);
+            CartItem cartItem = new CartItem("Book Title " + (i + 1), "Author " + (i + 1), 15.0);
             cartItems.add(cartItem);
             cartItemsContainer.getChildren().add(cartItem.createBookItem());
             if (i < CartManager.getBookCartNumber() - 1) {
