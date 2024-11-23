@@ -74,7 +74,8 @@ public class ActiveListingsPage extends Page {
 	
 	public ActiveListingsPage() {
 		title = "Active Listings";
-		
+		showSignoutButton = true;
+        
 		Button accountButton = new Button("Account");
 		accountButton.setStyle("-fx-font-size: 20px; -fx-background-color: #8e0c3a; -fx-text-fill: gold;");
 		

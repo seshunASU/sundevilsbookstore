@@ -7,8 +7,8 @@ public abstract class Page {
     protected String title;
     protected Tab tab;
 
-    protected boolean showBackButton;
-    protected boolean showAccountButton;
+    public boolean showBackButton;
+    public boolean showSignoutButton;
 
     public Page() {
         contentPane = new StackPane();

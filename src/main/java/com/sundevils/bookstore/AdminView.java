@@ -6,4 +6,8 @@ public class AdminView extends UserView {
         
         // Phase 4
     }
+
+    public void resetState() {
+        
+    }
 }

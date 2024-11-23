@@ -14,4 +14,8 @@ public class LoginView extends View {
 
         setPage(loginPage);
     }
+
+    public void resetState() {
+        
+    }
 }

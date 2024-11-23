@@ -26,4 +26,8 @@ public class SellerView extends UserView {
         
         setPage(activeListingsPage);
     }
+
+    public void resetState() {
+        
+    }
 }

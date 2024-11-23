@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 public class BookListingsPage extends Page {
     public BookListingsPage() {
         title = "Book Listings";
+        showSignoutButton = true;
         
         // TODO: clear copy & pasted code and actually make the page
 

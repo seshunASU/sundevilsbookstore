@@ -21,4 +21,8 @@ public class BuyerView extends UserView {
         
         setPage(bookListingsPage);
     }
+
+    public void resetState() {
+        
+    }
 }

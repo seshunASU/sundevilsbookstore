@@ -41,6 +41,7 @@ public class App extends Application  {
 
         stage.setMinWidth(1000);
         stage.setMinHeight(720);
+        stage.setMaximized(true);
         stage.show();
 
         // Set singleton
@@ -48,6 +49,13 @@ public class App extends Application  {
 
         // Finalizing
         App.updateWindowTitle();
+    }
+
+    public void resetState() {
+        loginView.resetState();
+        buyerView.resetState();
+        sellerView.resetState();
+        adminView.resetState();
     }
 
     public View getActiveView() {

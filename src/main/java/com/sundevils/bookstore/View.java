@@ -13,6 +13,8 @@ public abstract class View {
         pane.setId("rootPane");
     }
 
+    public abstract void resetState();
+
     public Pane getContentPane() {
         return pane;
     }

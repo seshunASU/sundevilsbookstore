@@ -3,8 +3,6 @@ package com.sundevils.bookstore;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
@@ -55,13 +53,7 @@ public class SalesHistoryPage extends Page {
 	
 	public SalesHistoryPage() {
 		title = "Sales History";
-
-		Button accountButton = new Button("Account");
-		accountButton.setStyle("-fx-font-size: 20px; -fx-background-color: #8e0c3a; -fx-text-fill: gold;");
-		
-		HBox account = new HBox(accountButton);
-		account.setPadding(new Insets(35));
-		account.setAlignment(Pos.TOP_RIGHT);
+		showSignoutButton = true;
 		
 		TableView<SalesHistory> historyTable = new TableView<SalesHistory>();
 		TableColumn<SalesHistory, String> dateCol = new TableColumn<SalesHistory, String>("Date");
@@ -161,7 +153,7 @@ public class SalesHistoryPage extends Page {
         
         HBox priceH = new HBox(totalEarnings, dollarSign, priceText);
 		
-		VBox vbox = new VBox(account, historyTable, priceH);
+		VBox vbox = new VBox(historyTable, priceH);
 		vbox.setPadding(new Insets(70, 50, 0, 50));
 		
 		contentPane.getChildren().add(vbox);
