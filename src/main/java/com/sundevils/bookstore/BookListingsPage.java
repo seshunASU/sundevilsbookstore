@@ -12,6 +12,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.Priority;
 
 public class BookListingsPage extends Page {
     public BookListingsPage() {
@@ -69,7 +72,7 @@ public class BookListingsPage extends Page {
 		}
 		
 		for (int i = 0; i < 49; i++) {
-			VBox book = createBookObject();
+			VBox book = createBookItem();
 			book.setMaxSize(120, 275);
 			
 			bookGrid.add(book, i % 7, i / 7);			
