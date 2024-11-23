@@ -77,7 +77,15 @@ public class BookListingsPage extends Page {
 			
 			bookGrid.add(book, i % 7, i / 7);			
 		}
-				
+		
+
+		// Iterate listings
+		for (Listing listing : App.getInstance().listingDB.getListings()) {
+			if (listing.getStatus() != ListingStatus.PENDING) {
+				// code here
+			}
+		}
+
 		ScrollPane scrollPane = new ScrollPane();
 		scrollPane.setContent(bookGrid);
 		scrollPane.setFitToHeight(true);

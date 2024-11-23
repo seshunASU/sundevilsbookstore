@@ -11,6 +11,7 @@ public class App extends Application  {
     private static App instance;
 
     public User loggedInUser;
+    public boolean loaded;
 
     private View activeView;
     private Stage stage;
@@ -30,6 +31,9 @@ public class App extends Application  {
 
     @Override
     public void start(Stage primaryStage) {
+        // Set singleton
+        instance = this;
+
         // Databases
         db = new Database();
         userDB = new UserDB(db);
@@ -55,10 +59,8 @@ public class App extends Application  {
         stage.setMaximized(true);
         stage.show();
 
-        // Set singleton
-        instance = this;
-
         // Finalizing
+        loaded = true;
         App.updateWindowTitle();
     }
 
@@ -111,7 +113,7 @@ public class App extends Application  {
     public static void updateWindowTitle() {
         App app = App.getInstance();
 
-        if (app != null) {
+        if (app.loaded && app != null) {
             app.setTitle("Sundevils Bookstore - " + app.getActiveView().getActivePageTitle());
         }
     }

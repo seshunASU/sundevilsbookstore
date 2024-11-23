@@ -102,7 +102,7 @@ public class ListingDB {
                 Seller seller = app.userDB.getUserFromId(rs.getInt("sellerId")).convertToSeller();
 
                 listings.add(new Listing(
-                    rs.getInt("int"),
+                    rs.getInt("id"),
                     book,
                     BookCondition.fromInt(rs.getInt("condition")),
                     ListingStatus.fromInt(rs.getInt("status")),
@@ -116,6 +116,6 @@ public class ListingDB {
         }
 
         
-        return null;
+        return listings;
     }
 }
