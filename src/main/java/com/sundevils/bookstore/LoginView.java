@@ -12,6 +12,10 @@ public class LoginView extends View {
         signupPage = new SignUpPage();
         forgotPasswordPage = new ForgotPasswordPage();
 
+        registerPage(loginPage);
+        registerPage(signupPage);
+        registerPage(forgotPasswordPage);
+
         setPage(loginPage);
     }
 

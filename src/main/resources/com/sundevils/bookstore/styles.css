@@ -1,3 +1,4 @@
+/* tabStuff */
 #rootPane {
     -fx-background-color: #111111;
     -fx-padding: 0 50px 0 50px;
@@ -52,4 +53,10 @@
     -fx-border-color: #ffc425;
     -fx-border-insets: -4 -4 -6 -5, -2 -2 -5 -3;
     -fx-border-radius: 2, 1;
+}
+
+/* backBtn */
+#backBtn {
+    -fx-background-radius: 100%;
+    -fx-background-color: #8e0c3a;
 }

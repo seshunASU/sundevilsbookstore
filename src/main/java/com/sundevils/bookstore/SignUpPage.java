@@ -17,6 +17,7 @@ import javafx.scene.text.Text;
 public class SignUpPage extends Page {
     public SignUpPage() {
         title = "Sign up";
+        backPage = "Login";
 
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);

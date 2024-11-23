@@ -16,6 +16,7 @@ import javafx.scene.text.Text;
 public class ForgotPasswordPage extends Page {
     public ForgotPasswordPage() {
         title = "Forgot Password";
+        backPage = "Login";
 
         // Create the grid layout
         GridPane grid = new GridPane();

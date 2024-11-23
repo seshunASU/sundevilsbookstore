@@ -4,6 +4,9 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
+import java.util.HashMap;
+import javafx.util.Pair;
+
 public class App extends Application  {
     private static App instance;
 
@@ -18,6 +21,8 @@ public class App extends Application  {
     public BuyerView buyerView;
     public SellerView sellerView;
     public AdminView adminView;
+
+    private static HashMap<String, Pair<Page, View>> pageRegistry = new HashMap<>();
 
     @Override
     public void start(Stage primaryStage) {
@@ -72,17 +77,25 @@ public class App extends Application  {
         stage.setTitle(title);
     }
 
+    // Singleton methods
+    public static App getInstance() {
+        return instance;
+    }
+    
+    public static void registerPage(Page page, View view) {
+        pageRegistry.put(page.getTitle(), new Pair<>(page, view));
+    }
+
+    public static Pair<Page, View> getPageAndView(String pageTitle) {
+        return pageRegistry.get(pageTitle);
+    }
+    
     public static void updateWindowTitle() {
         App app = App.getInstance();
 
         if (app != null) {
             app.setTitle("Sundevils Bookstore - " + app.getActiveView().getActivePageTitle());
         }
-    }
-
-    // Singleton methods
-    public static App getInstance() {
-        return instance;
     }
 
     public static UserDB getUserDB() {

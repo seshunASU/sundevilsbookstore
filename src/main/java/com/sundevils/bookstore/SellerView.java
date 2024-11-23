@@ -24,6 +24,10 @@ public class SellerView extends UserView {
         
         tabPane.getTabs().addAll(activeListingsTab, salesHistoryTab);
         
+        registerPage(activeListingsPage);
+        registerPage(newListingsPage);
+        registerPage(salesHistoryPage);
+        
         setPage(activeListingsPage);
     }
 

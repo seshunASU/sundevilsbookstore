@@ -24,7 +24,8 @@ import javafx.scene.text.Text;
 public class NewListingsPage extends Page {
 	public NewListingsPage() {
 		title = "Create New Listing";
-        
+        backPage = "Active Listings";
+		
         // Creating the grid layout for the login page
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);

@@ -20,6 +20,7 @@ public class CartPage extends Page {
 
     public CartPage() {
         title = "Shopping Cart";
+        backPage = "Book Listings";
 
         subtotalLabel = new Label("Subtotal: $0.00");
         taxLabel = new Label("Sales Tax: $0.00");

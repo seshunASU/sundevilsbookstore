@@ -16,8 +16,11 @@ public class BuyerView extends UserView {
 
         booksTab.associatePage(bookListingsPage);
         booksTab.associatePage(cartPage);
-        
+
         tabPane.getTabs().addAll(booksTab);
+        
+        registerPage(bookListingsPage);
+        registerPage(cartPage);
         
         setPage(bookListingsPage);
     }
