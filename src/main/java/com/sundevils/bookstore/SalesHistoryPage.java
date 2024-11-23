@@ -1,5 +1,7 @@
 package com.sundevils.bookstore;
 
+import com.sundevils.bookstore.SalesHistoryPage.SalesHistory;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -118,41 +120,39 @@ public class SalesHistoryPage extends Page {
 		historyTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 		
 		ObservableList<SalesHistory> historyData = FXCollections.observableArrayList(
-			new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
-			new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
-			new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
-			new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
-			new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
-			new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
-			new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
-			new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
-			new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
-			new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
-			new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
-			new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
-			new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
-			new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
-			new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
-			new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
-			new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
-			new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
-			new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
-			new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
-			new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson")
-		);
+			new SalesHistory("2024-11-22", "Advanced Python", "Used, Like New", 20.00, "John Doe"),
+			new SalesHistory("2024-10-10", "Advanced Chemistry", "Heavily Used", 12.00, "Jane Smith"),
+			new SalesHistory("2024-01-15", "Book Title 3", "Moderately Used", 22.00, "Mary Johnson"),
+			new SalesHistory("2024-09-01", "Science for All", "New", 30.00, "James Brown"),
+			new SalesHistory("2023-12-05", "Mathematics Simplified", "Used", 15.50, "Emily Davis"),
+			new SalesHistory("2024-07-19", "Programming 101", "Like New", 18.00, "Michael Clark"),
+			new SalesHistory("2024-03-12", "Advanced Physics", "New", 45.00, "Sarah Wilson"),
+			new SalesHistory("2024-05-25", "Novel Ideas", "Used", 10.75, "Chris Harris"),
+			new SalesHistory("2024-06-03", "Machine Learning Basics", "Like New", 28.00, "Rebecca Lewis"),
+			new SalesHistory("2024-02-20", "The Great Adventure", "New", 19.99, "David King"),
+			new SalesHistory("2024-04-11", "History of Art", "Used", 23.50, "Laura Scott"),
+			new SalesHistory("2023-11-15", "Culinary Arts Guide", "Like New", 16.75, "Alice Adams"),
+			new SalesHistory("2024-08-30", "The Art of War", "Used", 12.50, "George Martin"),
+			new SalesHistory("2024-03-27", "Introduction to AI", "Like New", 35.00, "Jack Miller"),
+			new SalesHistory("2024-10-22", "Fictional Worlds", "New", 25.00, "Olivia Harris"),
+			new SalesHistory("2024-01-01", "Understanding Economics", "Used", 17.99, "William Young"));
 
-		
+		double totalEarnings = 0;
+        for (SalesHistory sale : historyData) {
+            totalEarnings += sale.getSellPrice(); 
+        }
+
 		historyTable.setItems(historyData);
 		
-		Text totalEarnings = new Text("Total Earnings:");
-		totalEarnings.setFont(Font.font("", FontWeight.BOLD, 42));
-        totalEarnings.setFill(Color.GOLD);
+		Text totalEarningsText = new Text("Total Earnings:");
+		totalEarningsText.setFont(Font.font("", FontWeight.BOLD, 42));
+        totalEarningsText.setFill(Color.GOLD);
 		
         Text dollarSign = new Text(" $");
         dollarSign.setFont(Font.font("", FontWeight.BOLD, 42));
         dollarSign.setFill(Color.web("#8e0c3a"));
 		
-        Text priceText = new Text("285.00");
+        Text priceText = new Text(String.format("%.2f", totalEarnings));
         priceText.setFont(Font.font("", FontWeight.BOLD, 42));
         priceText.setFill(Color.GOLD);
         
@@ -180,3 +180,4 @@ public class SalesHistoryPage extends Page {
 	    });
 	}
 }
+
