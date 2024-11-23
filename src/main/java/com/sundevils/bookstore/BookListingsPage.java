@@ -136,6 +136,9 @@ public class BookListingsPage extends Page {
         Button addToCartButton = new Button("Add to Cart");
         addToCartButton.setStyle("-fx-font-size: 12px; -fx-background-color: #8e0c3a; -fx-text-fill: white;");
         addToCartButton.setCursor(Cursor.HAND);
+		addToCartButton.setOnAction(event -> {
+    			CartManager.incrementBookCartNumber();
+		});
         
         
         book.getChildren().addAll(bookContent, addToCartButton);
