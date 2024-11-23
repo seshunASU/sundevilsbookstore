@@ -106,7 +106,12 @@ public class SalesHistoryPage extends Page {
             };
         });
         
-        
+        // Iterate history log
+		App app = App.getInstance();
+		for (SalesHistoryLog log : app.salesHistoryDB.getHistory(3)) {
+            // ...
+        }
+
         @SuppressWarnings("unchecked")
 		TableColumn<SalesHistory, ?>[] columns = new TableColumn[] {dateCol, titleCol, conditionCol, sellPriceCol, buyerCol};
 		historyTable.getColumns().addAll(columns);

@@ -21,6 +21,7 @@ public class App extends Application  {
     public UserDB userDB;
     public BookDB bookDB;
     public ListingDB listingDB;
+    public SalesHistoryDB salesHistoryDB;
 
     public LoginView loginView;
     public BuyerView buyerView;
@@ -39,6 +40,7 @@ public class App extends Application  {
         userDB = new UserDB(db);
         bookDB = new BookDB(db);
         listingDB = new ListingDB(db);
+        salesHistoryDB = new SalesHistoryDB(db);
 
         // UI
         stage = primaryStage;

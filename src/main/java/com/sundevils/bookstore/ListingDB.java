@@ -89,6 +89,35 @@ public class ListingDB {
         }
     }
 
+    public Listing getListingFromId(int id) {
+        String query = "SELECT * FROM listings WHERE id = ?";
+        
+        try (PreparedStatement pstmt = db.prepareStatement(query)) {
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            
+            if (rs.next()) {
+                App app = App.getInstance();
+                Book book = app.bookDB.getBookFromId(rs.getInt("bookId"));
+                Seller seller = app.userDB.getUserFromId(rs.getInt("sellerId")).convertToSeller();
+
+                return new Listing(
+                    rs.getInt("id"),
+                    book,
+                    BookCondition.fromInt(rs.getInt("condition")),
+                    ListingStatus.fromInt(rs.getInt("status")),
+                    seller,
+                    rs.getDouble("price"),
+                    rs.getDouble("creationTime")
+                );
+            }
+        } catch (SQLException e) {
+            System.err.println("Error finding book by id: " + e.getMessage()); // TODO: throw exception?
+        }
+        
+        return null;
+    }
+
     public ArrayList<Listing> getListings() {
         ArrayList<Listing> listings = new ArrayList<>();
 
