@@ -47,7 +47,7 @@ public class BookListingsPage extends Page {
         // Test code
         testBtn.setOnAction(e -> {
             BuyerView buyerView = App.getInstance().buyerView;
-            // buyerView.setPage(buyerView.cartViewPage);
+            buyerView.setPage(buyerView.cartPage);
         });
     }
 }

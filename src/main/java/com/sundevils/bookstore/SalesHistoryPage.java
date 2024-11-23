@@ -1,3 +1,5 @@
+package com.sundevils.bookstore;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -16,9 +18,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 public class SalesHistoryPage extends Page {
-	
 	public class SalesHistory {
-		
 		String date;
 		String title;
 		String condition;
@@ -51,11 +51,11 @@ public class SalesHistoryPage extends Page {
 	    public String getBuyer() {
 	        return buyer;
 	    }
-		
 	}
 	
 	public SalesHistoryPage() {
-		
+		title = "Sales History";
+
 		Button accountButton = new Button("Account");
 		accountButton.setStyle("-fx-font-size: 20px; -fx-background-color: #8e0c3a; -fx-text-fill: gold;");
 		
@@ -63,15 +63,12 @@ public class SalesHistoryPage extends Page {
 		account.setPadding(new Insets(35));
 		account.setAlignment(Pos.TOP_RIGHT);
 		
-		
 		TableView<SalesHistory> historyTable = new TableView<SalesHistory>();
-		
 		TableColumn<SalesHistory, String> dateCol = new TableColumn<SalesHistory, String>("Date");
 		TableColumn<SalesHistory, String> titleCol = new TableColumn<SalesHistory, String>("Title");
 		TableColumn<SalesHistory, String> conditionCol = new TableColumn<>("Condition");
 		TableColumn<SalesHistory, Double> sellPriceCol = new TableColumn<SalesHistory, Double>("Sell Price");
 		TableColumn<SalesHistory, String> buyerCol = new TableColumn<SalesHistory, String>("Buyer");
-		
 		
 		titleCol.setMinWidth(200);
 		conditionCol.setMinWidth(140);
@@ -122,29 +119,30 @@ public class SalesHistoryPage extends Page {
 		TableColumn<SalesHistory, ?>[] columns = new TableColumn[] {dateCol, titleCol, conditionCol, sellPriceCol, buyerCol};
 		historyTable.getColumns().addAll(columns);
 		historyTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
+		
 		ObservableList<SalesHistory> historyData = FXCollections.observableArrayList(
-	            new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
-	            new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
-	            new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
-	            new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
-	            new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
-	            new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
-	            new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
-	            new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
-	            new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
-	            new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
-	            new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
-	            new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
-	            new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
-	            new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
-	            new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
-	            new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
-	            new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
-	            new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
-	            new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
-	            new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
-	            new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson")
-				);
+			new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
+			new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
+			new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
+			new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
+			new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
+			new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
+			new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
+			new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
+			new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
+			new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
+			new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
+			new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
+			new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
+			new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
+			new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
+			new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
+			new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
+			new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson"),
+			new SalesHistory("2024-11-22", "Book Title 1", "New", 19.99, "John Doe"),
+			new SalesHistory("2024-10-10", "Book Title 2", "Used", 12.50, "Jane Smith"),
+			new SalesHistory("2024-01-15", "Book Title 3", "Like New", 22.00, "Mary Johnson")
+		);
 
 		
 		historyTable.setItems(historyData);
@@ -167,7 +165,6 @@ public class SalesHistoryPage extends Page {
 		vbox.setPadding(new Insets(70, 50, 0, 50));
 		
 		contentPane.getChildren().add(vbox);
-		contentPane.setStyle("-fx-background-color: #191919;"); 
 	}
 	
 	private <T> void applyTextColor(TableColumn<SalesHistory, T> column) {

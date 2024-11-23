@@ -7,6 +7,7 @@ public class SellerView extends UserView {
 
     public ActiveListingsPage activeListingsPage;
     public NewListingsPage newListingsPage;
+    public SalesHistoryPage salesHistoryPage;
 
     public SellerView() {
         super();
@@ -16,9 +17,11 @@ public class SellerView extends UserView {
 
         activeListingsPage = new ActiveListingsPage();
         newListingsPage = new NewListingsPage();
+        salesHistoryPage = new SalesHistoryPage();
 
         activeListingsPage.associateTab(activeListingsTab);
         newListingsPage.associateTab(activeListingsTab);
+        salesHistoryPage.associateTab(salesHistoryTab);
         
         tabPane.getTabs().addAll(activeListingsTab, salesHistoryTab);
         

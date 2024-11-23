@@ -1,42 +1,38 @@
-import javafx.application.Application;
+package com.sundevils.bookstore;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cart extends Application {
-
+public class CartPage extends Page {
     private Label subtotalLabel;
     private Label taxLabel;
     private Label totalLabel;
     private VBox cartItemsContainer;
     private List<CartItem> cartItems = new ArrayList<>();
 
-    @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Shopping Cart");
+    public CartPage() {
+        title = "Shopping Cart";
+
         subtotalLabel = new Label("Subtotal: $0.00");
         taxLabel = new Label("Sales Tax: $0.00");
         totalLabel = new Label("Total: $0.00");
-        displayShoppingCart(primaryStage);
-        primaryStage.show();
-    }
 
-    private void displayShoppingCart(Stage primaryStage) {
         BorderPane root = new BorderPane();
         root.setStyle("-fx-background-color: #111111;");
+
         Label title = new Label("Shopping Cart");
         title.setFont(Font.font("", FontWeight.BOLD, 30));
         title.setTextFill(Color.GOLD);
         title.setPadding(new Insets(20));
+        
         StackPane titlePane = new StackPane(title);
         titlePane.setAlignment(Pos.CENTER);
         root.setTop(titlePane);
@@ -78,11 +74,10 @@ public class Cart extends Application {
         payButton.setPrefSize(200, 50);
         checkoutArea.getChildren().addAll(subtotalLabel, taxLabel, totalLabel, payButton);
         root.setRight(checkoutArea);
-        Scene shoppingCartScene = new Scene(root, 1000, 600);
-        primaryStage.setScene(shoppingCartScene);
+
         updateTotals();
 
-        //ADD BACK BUTTON TO GO TO PREVIOUS PAGE(LIKELY BUYER BOOK VIEW) !!IMPORTANT!!
+        contentPane.getChildren().add(root);
     }
 
     private void updateTotals() {
@@ -207,9 +202,5 @@ public class Cart extends Application {
             }
             return quantity * pricePerUnit;
         }
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
