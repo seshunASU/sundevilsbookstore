@@ -92,7 +92,7 @@ public class BookListingsPage extends Page {
 		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 		scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 		scrollPane.setPadding(new Insets(20, 50, 50, 50)); 
-        scrollPane.setStyle("-fx-background: #191919; -fx-border-color: #191919;");
+        scrollPane.setStyle("-fx-background: #191919; -fx-border-color: #111111;");
         
 		VBox vbox = new VBox(search, bookOptions, scrollPane);
 		vbox.setPadding(new Insets(70, 50, 0, 50));
