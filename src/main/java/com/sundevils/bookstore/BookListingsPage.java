@@ -52,11 +52,27 @@ public class BookListingsPage extends Page {
 		bookGrid.setVgap(20);
 		bookGrid.setPadding(new Insets(20, 50, 50, 50));
 		
-		for (int i = 0; i < 16; i++) {
-			VBox book = createBookItem();
-			book.setMaxSize(100, 200);
+		for (int i = 0; i < 7; i++) {
+            		ColumnConstraints column = new ColumnConstraints();
+	            	column.setMinWidth(120);
+	            	column.setMaxWidth(120);
+	           	 column.setHgrow(Priority.ALWAYS);
+	            	bookGrid.getColumnConstraints().add(column);
+		}
+		
+		for (int i = 0; i < 7; i++) {
+			RowConstraints row = new RowConstraints();
+			row.setMinHeight(275);
+			row.setMaxHeight(275);
+			row.setVgrow(Priority.ALWAYS);
+			bookGrid.getRowConstraints().add(row);
+		}
+		
+		for (int i = 0; i < 49; i++) {
+			VBox book = createBookObject();
+			book.setMaxSize(120, 275);
 			
-			bookGrid.add(book, i % 8, i / 8);			
+			bookGrid.add(book, i % 7, i / 7);			
 		}
 				
 		ScrollPane scrollPane = new ScrollPane();
