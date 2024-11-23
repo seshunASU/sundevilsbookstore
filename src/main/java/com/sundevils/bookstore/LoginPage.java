@@ -100,27 +100,45 @@ public class LoginPage extends Page {
             // Checking login 
             String usernameInput = userTextField.getText();
             String passwordInput = passwordField.getText();
+            String errorMessage = "Incorrect password. Please try again.";
+
             ArrayList<User> foundLogins = User.findUsersByName(usernameInput, true);
-            boolean loggedIn = false;
+            User userAccount = null;
 
             for (User user : foundLogins) {
                 if (user.validatePassword(passwordInput)) {
-                    loggedIn = true;
-                    System.out.println("Logged in as User #" + user.id);
-                    break;
+                    if (user.type == AccountType.PENDING) {
+                        errorMessage = "Account is awaiting approval. Please try again later or contact an admin.";
+                    } else {
+                        userAccount = user;
+                        System.out.println("Logged in as User #" + user.id);
+                        break;
+                    }
                 }
             }
 
-            if (!loggedIn) {
-                String errorMessage = "Incorrect password. Please try again.";
+            if (userAccount != null) {
+                errorText.setText("");
 
+                App app = App.getInstance();
+                switch(userAccount.type) {
+                    case BUYER:
+                        app.setActiveView(app.buyerView);                        
+                        break;
+                    case SELLER:
+                        app.setActiveView(app.sellerView);
+                        break;
+                    case ADMIN:
+                        app.setActiveView(app.adminView);
+                        break;
+                    default:
+                }
+            } else {
                 if (foundLogins.size() == 0) {
                     errorMessage = "User not in system. Please try again.";
                 }
 
                 errorText.setText(errorMessage);
-            } else {
-                errorText.setText("");
             }
         });
 

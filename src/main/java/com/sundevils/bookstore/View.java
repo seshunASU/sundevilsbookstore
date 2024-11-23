@@ -13,7 +13,7 @@ public abstract class View {
         pane = new StackPane();
         scene = new Scene(pane);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
-
+        
         pane.setId("rootPane");
     }
 

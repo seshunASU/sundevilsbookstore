@@ -32,16 +32,17 @@ public class App extends Application  {
 
         setActiveView(loginView);
 
+        stage.setMinWidth(1000);
+        stage.setMinHeight(720);
+        stage.show();
+
         // Set singleton
         instance = this;
     }
 
     public void setActiveView(View view) {
         activeView = view;
-
         stage.setScene(view.getScene());
-        stage.setMaximized(true);
-        stage.show();
     }
 
     // Singleton methods
