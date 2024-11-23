@@ -42,12 +42,11 @@ public class CartPage extends Page {
         cartItemsContainer.setPadding(new Insets(20));
         cartItemsContainer.setStyle("-fx-background-color: #111111;");
 
-        //CHANGE to i<BOOKCARTNUMBER !!!IMPORTANT!!!
-        for (int i = 0; i < 6; i++) {
-            CartItem2 cartItem = new CartItem2("Book Title " + (i + 1), "Author " + (i + 1), 5.0);
+        for (int i = 0; i < CartManager.getBookCartNumber(); i++) {
+            CartItem cartItem = new CartItem("Book Title " + (i + 1), "Author " + (i + 1), 5.0);
             cartItems.add(cartItem);
             cartItemsContainer.getChildren().add(cartItem.createBookItem());
-            if (i < 5) { // CHANGE to i<CARTNUMBER-1 !!!IMPORTANT!!!
+            if (i < CartManager.getBookCartNumber() - 1) {
                 Separator separator = cartItem.createSeparator();
                 cartItemsContainer.getChildren().add(separator);
             }
@@ -79,6 +78,15 @@ public class CartPage extends Page {
         updateTotals();
 
         contentPane.getChildren().add(root);
+    }
+    public class CartManager {
+        private static int bookCartNumber = 0;
+        public static int getBookCartNumber() {
+            return bookCartNumber;
+        }
+        public static void incrementBookCartNumber() {
+            bookCartNumber++;
+        }
     }
 
     private void updateTotals() {
@@ -169,14 +177,14 @@ public class CartPage extends Page {
             //For price on the book in cart
             switch (condition) {
                 case "New":
-                    pricePerUnit = 5.0;
+                    pricePerUnit = 15.0;
                     break;
                 case "Used, Like New":
-                    pricePerUnit = 3.0;
+                    pricePerUnit = 13.0;
                     break;
                 case "Used, Good":
                 default:
-                    pricePerUnit = 1.0;
+                    pricePerUnit = 11.0;
                     break;
             }
             priceLabel.setText(String.format("$%.2f", pricePerUnit));
@@ -191,14 +199,14 @@ public class CartPage extends Page {
             //For calculating subtotal, tax, and total
             switch (condition) {
                 case "New":
-                    pricePerUnit = 5.0;
+                    pricePerUnit = 15.0;
                     break;
                 case "Used, Like New":
-                    pricePerUnit = 3.0;
+                    pricePerUnit = 13.0;
                     break;
                 case "Used, Good":
                 default:
-                    pricePerUnit = 1.0;
+                    pricePerUnit = 11.0;
                     break;
             }
             return quantity * pricePerUnit;
