@@ -75,13 +75,6 @@ public class ActiveListingsPage extends Page {
 	public ActiveListingsPage() {
 		title = "Active Listings";
 		showSignoutButton = true;
-        
-		Button accountButton = new Button("Account");
-		accountButton.setStyle("-fx-font-size: 20px; -fx-background-color: #8e0c3a; -fx-text-fill: gold;");
-		
-		HBox account = new HBox(accountButton);
-		account.setPadding(new Insets(35));
-		account.setAlignment(Pos.TOP_RIGHT);
 		
 		Button newListingButton = new Button("New Listing");
 		newListingButton.setStyle("-fx-font-size: 20px; -fx-background-color: #ffc425; -fx-text-fill: #8e0c3a;");
@@ -207,7 +200,7 @@ public class ActiveListingsPage extends Page {
 		
 		listingsTable.setItems(bookData);
 				
-		VBox vbox = new VBox(account, listingsTable, newListing);
+		VBox vbox = new VBox(listingsTable, newListing);
 		vbox.setPadding(new Insets(70, 50, 0, 50));
 		
 		contentPane.getChildren().add(vbox);
