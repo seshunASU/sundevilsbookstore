@@ -97,11 +97,11 @@ public class App extends Application  {
     }
 
     public static Buyer getLoggedInBuyer() {
-        return App.getLoggedInUser().convertToBuyer();
+        return (Buyer) App.getLoggedInUser();
     }
 
     public static Seller getLoggedInSeller() {
-        return App.getLoggedInUser().convertToSeller();
+        return (Seller) App.getLoggedInUser();
     }
     
     public static void registerPage(Page page, View view) {

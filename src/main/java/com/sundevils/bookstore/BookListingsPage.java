@@ -31,6 +31,7 @@ public class BookListingsPage extends Page {
 		cartButton.setCursor(Cursor.HAND);
 		cartButton.setOnAction(e -> {
             BuyerView buyerView = App.getInstance().buyerView;
+			buyerView.cartPage.updateCart();
             buyerView.setPage(buyerView.cartPage);
         });
 		

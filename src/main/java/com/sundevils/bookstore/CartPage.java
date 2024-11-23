@@ -42,16 +42,6 @@ public class CartPage extends Page {
         cartItemsContainer.setPadding(new Insets(20));
         cartItemsContainer.setStyle("-fx-background-color: #111111;");
 
-        for (int i = 0; i < CartManager.getBookCartNumber(); i++) {
-            CartItem2 cartItem = new CartItem2("Book Title " + (i + 1), "Author " + (i + 1), 15.0);
-            cartItems.add(cartItem);
-            cartItemsContainer.getChildren().add(cartItem.createBookItem());
-            if (i < CartManager.getBookCartNumber() - 1) {
-                Separator separator = cartItem.createSeparator();
-                cartItemsContainer.getChildren().add(separator);
-            }
-        }
-
         ScrollPane scrollPane = new ScrollPane(cartItemsContainer);
         scrollPane.setFitToWidth(true);
         scrollPane.setStyle("-fx-background: #111111; -fx-border-color: #111111;");
@@ -75,18 +65,39 @@ public class CartPage extends Page {
         checkoutArea.getChildren().addAll(subtotalLabel, taxLabel, totalLabel, payButton);
         root.setRight(checkoutArea);
 
+        payButton.setOnAction(e -> {
+            // TODO: update listings in database
+            // TODO: update bookListingsPage
+            App.getLoggedInBuyer().cart.clear();
+            
+            BuyerView buyerView = App.getInstance().buyerView;
+            buyerView.setPage(buyerView.bookListingsPage);
+        });
+
         updateTotals();
 
         contentPane.getChildren().add(root);
     }
-    
-    public static class CartManager {
-        private static int bookCartNumber = 0;
-        public static int getBookCartNumber() {
-            return bookCartNumber;
-        }
-        public static void incrementBookCartNumber() {
-            bookCartNumber++;
+
+    public void updateCart() {
+        System.out.println("updating cart");
+        ArrayList<Listing> cart = App.getLoggedInBuyer().cart;
+        cartItemsContainer.getChildren().clear();
+
+        boolean firstItem = true;
+        for (Listing cartListing : cart) {
+            System.out.println("found cart item");
+            Book listingBook = cartListing.getBook();
+            CartItem2 cartItem = new CartItem2(listingBook.getTitle(), listingBook.getAuthor(), cartListing.getPrice());
+            cartItems.add(cartItem);
+
+            if (!firstItem) {
+                cartItemsContainer.getChildren().add(cartItem.createSeparator());
+            }
+            
+            cartItemsContainer.getChildren().add(cartItem.createBookItem());
+            
+            firstItem = false;
         }
     }
 
